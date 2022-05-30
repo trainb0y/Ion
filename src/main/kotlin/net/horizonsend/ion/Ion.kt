@@ -1,6 +1,8 @@
 package net.horizonsend.ion
 
 import co.aikar.commands.PaperCommandManager
+import net.horizonsend.ion.features.blasters.BlasterCommand
+import net.horizonsend.ion.features.blasters.BlasterListener
 import net.horizonsend.ion.features.ores.OreListener
 import net.horizonsend.ion.miscellaneous.ShrugCommand
 import net.horizonsend.ion.miscellaneous.listeners.BlockFadeListener
@@ -30,6 +32,7 @@ class Ion : JavaPlugin() {
 			this,
 			Runnable {
 				arrayOf(
+					BlasterListener(),
 					BlockFadeListener(),
 					BlockFormListener(),
 					PlayerDeathListener(),
@@ -51,6 +54,7 @@ class Ion : JavaPlugin() {
 					enableUnstableAPI("help")
 
 					registerCommand(ShrugCommand())
+					registerCommand(BlasterCommand())
 				}
 			}
 		)
