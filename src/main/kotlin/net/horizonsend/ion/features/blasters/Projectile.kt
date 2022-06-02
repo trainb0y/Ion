@@ -28,7 +28,7 @@ class Projectile(
 			false,
 			0.5
 		) {
-			it != source
+			it != source && it is Damageable
 		}
 
 		val hitEntity = rayTraceResult?.hitEntity as Damageable?
