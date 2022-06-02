@@ -3,19 +3,17 @@ package net.horizonsend.ion.features.blasters
 import com.destroystokyo.paper.event.server.ServerTickStartEvent
 import net.kyori.adventure.key.Key
 import net.kyori.adventure.sound.Sound
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.inventory.ItemStack
 
-class BlasterListener : Listener {
-	private val projectiles = mutableListOf<Projectile>()
+val projectiles = mutableListOf<Projectile>()
 
+class BlasterListener : Listener {
 	@EventHandler
 	fun onEntityDamageEvent(event: EntityDamageByEntityEvent) {
 		val player = event.damager as? Player ?: return
