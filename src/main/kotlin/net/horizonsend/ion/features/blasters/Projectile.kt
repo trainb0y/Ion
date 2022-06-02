@@ -31,7 +31,12 @@ class Projectile(
 			it != source
 		}
 
-		(rayTraceResult?.hitEntity as Damageable?)?.damage(5.0)
+		val hitEntity = rayTraceResult?.hitEntity as Damageable?
+
+		if (hitEntity != null) {
+			noCancelEntities.add(hitEntity)
+			hitEntity.damage(5.0, source)
+		}
 
 		val distanceToHit = rayTraceResult?.hitPosition?.distance(location.toVector())
 

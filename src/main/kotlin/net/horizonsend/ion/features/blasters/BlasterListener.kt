@@ -4,6 +4,7 @@ import com.destroystokyo.paper.event.server.ServerTickStartEvent
 import net.kyori.adventure.key.Key
 import net.kyori.adventure.sound.Sound
 import org.bukkit.Material
+import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -13,9 +14,16 @@ import org.bukkit.inventory.ItemStack
 
 val projectiles = mutableListOf<Projectile>()
 
+val noCancelEntities = mutableListOf<Entity>()
+
 class BlasterListener : Listener {
 	@EventHandler
 	fun onEntityDamageEvent(event: EntityDamageByEntityEvent) {
+		if (noCancelEntities.contains(event.entity)) {
+			noCancelEntities.remove(event.entity)
+			return
+		}
+
 		val player = event.damager as? Player ?: return
 
 		if (fireBlaster(player, player.inventory.itemInMainHand)) event.isCancelled = true
