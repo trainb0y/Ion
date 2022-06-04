@@ -36,14 +36,17 @@ class BlasterListener : Listener {
 
 	private fun fireBlaster(source: Player, blaster: ItemStack?): Boolean {
 		if (blaster == null) return false
-		if (blaster.type != Material.NETHERITE_SWORD) return false
-		if (blaster.itemMeta!!.customModelData == 0) return false
-		if (source.getCooldown(Material.NETHERITE_SWORD) > 0) return false
 
-		source.setCooldown(Material.NETHERITE_SWORD, 10)
+		Weapon.values().find { it.material == blaster.type }?.onLeftClick(source)
 
-		projectiles.add(Projectile(source.eyeLocation, source, 16.0))
-		source.playSound(Sound.sound(Key.key("minecraft", "entity.firework_rocket.blast"), Sound.Source.PLAYER, 0.5f, 0.5f))
+//		if (blaster.type != Material.NETHERITE_SWORD) return false
+//		if (blaster.itemMeta!!.customModelData == 0) return false
+//		if (source.getCooldown(Material.NETHERITE_SWORD) > 0) return false
+//
+//		source.setCooldown(Material.NETHERITE_SWORD, 10)
+//
+//		projectiles.add(Projectile(source.eyeLocation, source, 16.0))
+//		source.playSound(Sound.sound(Key.key("minecraft", "entity.firework_rocket.blast"), Sound.Source.PLAYER, 0.5f, 0.5f))
 
 		return true
 	}

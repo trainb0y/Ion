@@ -1,11 +1,11 @@
 package net.horizonsend.ion.features.blasters
 
-import net.starlegacy.util.randomDouble
 import org.bukkit.Material
 import org.bukkit.Sound
 import org.bukkit.SoundCategory
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
+import kotlin.random.Random
 
 enum class Weapon(val material: Material, val cooldown: Int) {
 	BLASTER_PISTOL(Material.NETHERITE_SWORD, 20) {
@@ -14,64 +14,42 @@ enum class Weapon(val material: Material, val cooldown: Int) {
 
 			player.world.playSound(
 				player.eyeLocation,
-				Sound.ENTITY_FIREWORK_ROCKET_BLAST,
+				Sound.ENTITY_FIREWORK_ROCKET_BLAST_FAR,
 				SoundCategory.PLAYERS,
 				0.5f,
-				randomDouble(0.3, 0.7).toFloat()
+				(Random.nextFloat() * .4f) + .5f
 			)
 		}
 	},
-	BLASTER_RIFLE(Material.NETHERITE_PICKAXE, 2) {
+	BLASTER_SHOTFUN(Material.NETHERITE_AXE, 20) {
 		override fun onLeftClick(player: Player) {
-			projectiles.add(Projectile(player.eyeLocation, player, 16.0))
+			val eyeLocation = player.eyeLocation
+
+			val shot1 = eyeLocation.clone()
+			val shot2 = eyeLocation.clone()
+			val shot3 = eyeLocation.clone()
+			val shot4 = eyeLocation.clone()
+
+			shot1.pitch += (Random.nextFloat() * 8) - 4
+			shot1.yaw   += (Random.nextFloat() * 8) - 4
+			shot2.pitch += (Random.nextFloat() * 8) - 4
+			shot2.yaw   += (Random.nextFloat() * 8) - 4
+			shot3.pitch += (Random.nextFloat() * 8) - 4
+			shot3.yaw   += (Random.nextFloat() * 8) - 4
+			shot4.pitch += (Random.nextFloat() * 8) - 4
+			shot4.yaw   += (Random.nextFloat() * 8) - 4
+
+			projectiles.add(Projectile(shot1, player, 8.0).apply { tick() })
+			projectiles.add(Projectile(shot2, player, 8.0).apply { tick() })
+			projectiles.add(Projectile(shot3, player, 8.0).apply { tick() })
+			projectiles.add(Projectile(shot4, player, 8.0).apply { tick() })
 
 			player.world.playSound(
 				player.eyeLocation,
 				Sound.ENTITY_FIREWORK_ROCKET_BLAST,
 				SoundCategory.PLAYERS,
 				0.5f,
-				randomDouble(0.3, 0.7).toFloat()
-			)
-		}
-
-		override fun onRightClick(player: Player) = onLeftClick(player)
-	},
-	BLASTER_SHOTGUN(Material.NETHERITE_SHOVEL, 40) {
-		override fun onLeftClick(player: Player) {
-			projectiles.add(Projectile(player.eyeLocation, player, 8.0))
-
-			player.world.playSound(
-				player.eyeLocation,
-				Sound.ENTITY_FIREWORK_ROCKET_BLAST,
-				SoundCategory.PLAYERS,
-				0.5f,
-				randomDouble(0.3, 0.7).toFloat()
-			)
-		}
-	},
-	BLASTER_SNIPER(Material.NETHERITE_AXE, 80) {
-		override fun onLeftClick(player: Player) {
-			projectiles.add(Projectile(player.eyeLocation, player, 8.0))
-
-			player.world.playSound(
-				player.eyeLocation,
-				Sound.ENTITY_FIREWORK_ROCKET_BLAST,
-				SoundCategory.PLAYERS,
-				0.5f,
-				randomDouble(0.3, 0.7).toFloat()
-			)
-		}
-	},
-	BLASTER_CANNON(Material.NETHERITE_HOE, 160) {
-		override fun onLeftClick(player: Player) {
-			projectiles.add(Projectile(player.eyeLocation, player, 2.0))
-
-			player.world.playSound(
-				player.eyeLocation,
-				Sound.ENTITY_FIREWORK_ROCKET_BLAST,
-				SoundCategory.PLAYERS,
-				0.5f,
-				randomDouble(0.3, 0.7).toFloat()
+				(Random.nextFloat() * .4f)
 			)
 		}
 	};
@@ -81,8 +59,4 @@ enum class Weapon(val material: Material, val cooldown: Int) {
 	open fun onRightClick(player: Player) {}
 
 	open fun onHit(target: LivingEntity) {}
-
-  companion object {
-		val blasterMaterials = values().associateBy { it.material }
-  }
 }
