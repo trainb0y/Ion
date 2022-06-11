@@ -1,9 +1,6 @@
 package net.horizonsend.ion.features.blasters
 
 import com.destroystokyo.paper.event.server.ServerTickStartEvent
-import net.kyori.adventure.key.Key
-import net.kyori.adventure.sound.Sound
-import org.bukkit.Material
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -39,14 +36,14 @@ class BlasterListener : Listener {
 
 		Weapon.values().find { it.material == blaster.type }?.onLeftClick(source)
 
-//		if (blaster.type != Material.NETHERITE_SWORD) return false
-//		if (blaster.itemMeta!!.customModelData == 0) return false
-//		if (source.getCooldown(Material.NETHERITE_SWORD) > 0) return false
+// 		if (blaster.type != Material.NETHERITE_SWORD) return false
+// 		if (blaster.itemMeta!!.customModelData == 0) return false
+// 		if (source.getCooldown(Material.NETHERITE_SWORD) > 0) return false
 //
-//		source.setCooldown(Material.NETHERITE_SWORD, 10)
+// 		source.setCooldown(Material.NETHERITE_SWORD, 10)
 //
-//		projectiles.add(Projectile(source.eyeLocation, source, 16.0))
-//		source.playSound(Sound.sound(Key.key("minecraft", "entity.firework_rocket.blast"), Sound.Source.PLAYER, 0.5f, 0.5f))
+// 		projectiles.add(Projectile(source.eyeLocation, source, 16.0))
+// 		source.playSound(Sound.sound(Key.key("minecraft", "entity.firework_rocket.blast"), Sound.Source.PLAYER, 0.5f, 0.5f))
 
 		return true
 	}
