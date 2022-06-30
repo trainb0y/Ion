@@ -6,6 +6,7 @@ import net.horizonsend.ion.server.commands.GuideCommand
 import net.horizonsend.ion.server.listeners.luckperms.UserDataRecalculateListener
 import net.horizonsend.ion.server.utilities.forbiddenCraftingItems
 import org.bukkit.Keyed
+import net.horizonsend.ion.server.commands.ScreenTestCommand
 import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.event.Listener
@@ -118,6 +119,7 @@ class IonServer : JavaPlugin() {
 		 */
 		PaperCommandManager(this).apply {
 			registerCommand(GuideCommand())
+			registerCommand(ScreenTestCommand())
 		}
 	}
 }
