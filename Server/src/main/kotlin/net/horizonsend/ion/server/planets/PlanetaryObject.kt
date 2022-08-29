@@ -3,28 +3,18 @@ package net.horizonsend.ion.server.planets
 import net.kyori.adventure.text.Component
 
 interface PlanetaryObject {
-	/**
-	 * The name of the planetary object, used internally, and not displayed to any players.
-	 */
+	/** The name of the planetary object, used internally, and not displayed to any players. */
 	val name: String
 
-	/**
-	 * The display name of the planetary object, can be used to apply formatting.
-	 */
+	/** The display name of the planetary object, can be used to apply formatting. */
 	val displayName: Component
 
-	/**
-	 * The X coordinate.
-	 */
+	/** The X coordinate. */
 	val x: Int
 
-	/**
-	 * The Z coordinate.
-	 */
+	/** The Z coordinate. */
 	val z: Int
 
-	/**
-	 * Planetary objects orbiting this planetary object.
-	 */
+	/** Planetary objects orbiting this planetary object. */
 	val orbitingObjects: Array<OrbitingPlanetaryObject>
 }
