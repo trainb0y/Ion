@@ -13,7 +13,7 @@ data class Planet(
 	override val orbitSizeZ: Int,
 	override val orbitingObjects: Array<OrbitingPlanetaryObject> = arrayOf()
 ) : OrbitingPlanetaryObject {
-	override val displayName: Component = Component.text(name.replaceFirstChar { it.uppercase() } + " System")
+	override val displayName: Component = Component.text(name.replaceFirstChar { it.uppercase() })
 
 	// We only bother implementing this to avoid a editor warning
 	// The code only identifies them by name so that alone is enough
