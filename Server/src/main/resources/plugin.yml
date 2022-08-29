@@ -4,6 +4,7 @@ main: net.horizonsend.ion.server.IonServer
 load: STARTUP
 api-version: 1.19
 softdepend:
+  - Multiverse-Core
   - ProtocolLib
   - IonCore
   - Vault
