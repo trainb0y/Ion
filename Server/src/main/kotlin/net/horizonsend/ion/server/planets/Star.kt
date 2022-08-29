@@ -14,9 +14,7 @@ data class Star(
 	override val z: Int,
 	override val orbitingObjects: Array<OrbitingPlanetaryObject> = arrayOf()
 ) : StationaryPlanetaryObject {
-	override val displayName: Component =
-		Component.text(name.replaceFirstChar { it.uppercase() } + " System")
-			.color(TextColor.fromHexString(starColour))
+	override val displayName: Component = Component.text("$name System").color(TextColor.fromHexString(starColour))
 
 	// We only bother implementing this to avoid a editor warning
 	// The code only identifies them by name so that alone is enough

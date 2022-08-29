@@ -9,7 +9,7 @@ data class RougePlanet(
 	override val z: Int,
 	override val orbitingObjects: Array<OrbitingPlanetaryObject> = arrayOf()
 ) : StationaryPlanetaryObject {
-	override val displayName: Component = Component.text(name.replaceFirstChar { it.uppercase() })
+	override val displayName: Component = Component.text(name)
 
 	// We only bother implementing this to avoid a editor warning
 	// The code only identifies them by name so that alone is enough
