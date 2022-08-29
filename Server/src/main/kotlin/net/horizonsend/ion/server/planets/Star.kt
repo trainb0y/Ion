@@ -13,7 +13,7 @@ data class Star(
 	override val x: Int,
 	override val z: Int,
 	override val orbitingObjects: Array<OrbitingPlanetaryObject> = arrayOf()
-) : PlanetaryObject {
+) : StationaryPlanetaryObject {
 	override val displayName: Component =
 		Component.text(name.replaceFirstChar { it.uppercase() } + " System")
 			.color(TextColor.fromHexString(starColour))

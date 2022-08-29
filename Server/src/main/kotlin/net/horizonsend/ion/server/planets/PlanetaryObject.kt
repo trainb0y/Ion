@@ -9,12 +9,6 @@ interface PlanetaryObject {
 	/** The display name of the planetary object, can be used to apply formatting. */
 	val displayName: Component
 
-	/** The X coordinate. */
-	val x: Int
-
-	/** The Z coordinate. */
-	val z: Int
-
 	/** Planetary objects orbiting this planetary object. */
 	val orbitingObjects: Array<OrbitingPlanetaryObject>
 }
