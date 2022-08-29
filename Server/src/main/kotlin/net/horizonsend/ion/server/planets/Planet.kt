@@ -1,14 +1,17 @@
 package net.horizonsend.ion.server.planets
 
 import net.kyori.adventure.text.Component
+import org.spongepowered.configurate.objectmapping.ConfigSerializable
 
+/** @see OrbitingPlanetaryObject */
+@ConfigSerializable
 data class Planet(
 	override val name: String,
 	override val orbitOffsetX: Int,
 	override val orbitOffsetZ: Int,
 	override val orbitSizeX: Int,
 	override val orbitSizeZ: Int,
-	override val orbitingObjects: Array<OrbitingPlanetaryObject>
+	override val orbitingObjects: Array<OrbitingPlanetaryObject> = arrayOf()
 ) : OrbitingPlanetaryObject {
 	override val displayName: Component = Component.text(name.replaceFirstChar { it.uppercase() } + " System")
 

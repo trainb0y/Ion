@@ -4,7 +4,7 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.TextColor
 import org.spongepowered.configurate.objectmapping.ConfigSerializable
 
-/** Represents a big flaming ball of gas in space, specified by configuration. */
+/** @see StationaryPlanetaryObject */
 @ConfigSerializable
 data class Star(
 	override val name: String,
