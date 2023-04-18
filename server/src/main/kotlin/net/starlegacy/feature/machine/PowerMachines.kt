@@ -66,7 +66,7 @@ object PowerMachines : SLComponent() {
 		}
 
 		return sign.persistentDataContainer.get(NamespacedKeys.POWER, PersistentDataType.INTEGER)
-			?: return setPower(sign, sign.getLine(2).removePrefix(prefix).toIntOrNull() ?: 0)
+			?: return setPower(sign, 0)
 	}
 
 	fun addPower(sign: Sign, amount: Int) {
